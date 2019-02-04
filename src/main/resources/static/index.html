@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Workbook reader by Rafał Mazurek</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div>
+    <form method="POST" enctype="multipart/form-data" action="/process-file">
+        <table>
+            <tr><td>Załaduj z dysku plik: (Workbook2.csv lub Workbook2.prn)</td></tr>
+            <tr><td><input type="file" name="file" /></td></tr>
+            <tr><td><input type="submit" value="Wyświetl"/></td></tr>
+        </table>
+    </form>
+</div>
+
+<div>
+    <ul>
+        <li th:each="file : ${files}">
+            <a th:href="${file}" th:text="${file}" />
+        </li>
+    </ul>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="prod : ${records}">
+        <td th:text="${record.name}">1</td>
+        <td th:text="${record.address}">2</td>
+        <td th:text="${record.postCode}">3</td>
+        <td th:text="${record.phone}">4</td>
+        <td th:text="${record.creditLimit}">5</td>
+        <td th:text="${record.birthday}">6</td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>
