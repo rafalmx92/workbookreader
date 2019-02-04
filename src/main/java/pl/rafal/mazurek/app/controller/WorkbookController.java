@@ -9,6 +9,6 @@ public class WorkbookController {
 
     @GetMapping(path = "/healthcheck")
     public String healthCheck(){
-        return "It works";
+        return "It works good";
     }
 }
