@@ -8,6 +8,11 @@ public class ParsedWorkbook {
     private List<WorkbookRecord> workbookRecords;
     private List<String> header;
 
+    public ParsedWorkbook(List<WorkbookRecord> workbookRecords, List<String> header) {
+        this.workbookRecords = workbookRecords;
+        this.header = header;
+    }
+
     public List<WorkbookRecord> getWorkbookRecords() {
         return workbookRecords;
     }
