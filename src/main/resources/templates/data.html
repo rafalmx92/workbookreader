@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style type="text/css">
+        .myTable { background-color:#eee;border-collapse:collapse; }
+        .myTable th { background-color:#000;color:white; }
+        .myTable td, .myTable th { padding:5px;border:1px solid #000; }
+    </style>
+</head>
+<body>
+<div>
+    <h2 th:text="${fileName}"/>
+</div>
+
+<table class="myTable">
+    <thead>
+    <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="record : ${records}">
+        <td th:text="${record.name}">1</td>
+        <td th:text="${record.address}">2</td>
+        <td th:text="${record.postalCode}">3</td>
+        <td th:text="${record.phone}">4</td>
+        <td th:text="${record.creditLimit}">5</td>
+        <td th:text="${record.birthday}">6</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

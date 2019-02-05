@@ -1,5 +1,7 @@
 package pl.rafal.mazurek.app.dto;
 
+import java.util.Objects;
+
 public class WorkbookRecord {
 
     private String name;
@@ -64,5 +66,35 @@ public class WorkbookRecord {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WorkbookRecord that = (WorkbookRecord) o;
+        return Objects.equals(name, that.name) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(postalCode, that.postalCode) &&
+                Objects.equals(phone, that.phone) &&
+                Objects.equals(creditLimit, that.creditLimit) &&
+                Objects.equals(birthday, that.birthday);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, address, postalCode, phone, creditLimit, birthday);
+    }
+
+    @Override
+    public String toString() {
+        return "WorkbookRecord{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", phone='" + phone + '\'' +
+                ", creditLimit='" + creditLimit + '\'' +
+                ", birthday='" + birthday + '\'' +
+                '}';
     }
 }
