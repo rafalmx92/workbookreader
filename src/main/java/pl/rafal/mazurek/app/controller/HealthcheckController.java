@@ -3,7 +3,7 @@ package pl.rafal.mazurek.app.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/api")
+@RestController
 public class HealthcheckController {
 
     @GetMapping(path = "/healthcheck")
