@@ -6,11 +6,11 @@ import java.util.Objects;
 public class ParsedWorkbook {
 
     private List<WorkbookRecord> workbookRecords;
-    private List<String> header;
+    private List<String> headers;
 
-    public ParsedWorkbook(List<WorkbookRecord> workbookRecords, List<String> header) {
+    public ParsedWorkbook(List<WorkbookRecord> workbookRecords, List<String> headers) {
         this.workbookRecords = workbookRecords;
-        this.header = header;
+        this.headers = headers;
     }
 
     public List<WorkbookRecord> getWorkbookRecords() {
@@ -21,12 +21,12 @@ public class ParsedWorkbook {
         this.workbookRecords = workbookRecords;
     }
 
-    public List<String> getHeader() {
-        return header;
+    public List<String> getHeaders() {
+        return headers;
     }
 
-    public void setHeader(List<String> header) {
-        this.header = header;
+    public void setHeaders(List<String> headers) {
+        this.headers = headers;
     }
 
     @Override
@@ -35,19 +35,19 @@ public class ParsedWorkbook {
         if (o == null || getClass() != o.getClass()) return false;
         ParsedWorkbook that = (ParsedWorkbook) o;
         return Objects.equals(workbookRecords, that.workbookRecords) &&
-                Objects.equals(header, that.header);
+                Objects.equals(headers, that.headers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(workbookRecords, header);
+        return Objects.hash(workbookRecords, headers);
     }
 
     @Override
     public String toString() {
         return "ParsedWorkbook{" +
                 "workbookRecords=" + workbookRecords +
-                ", header=" + header +
+                ", headers=" + headers +
                 '}';
     }
 }

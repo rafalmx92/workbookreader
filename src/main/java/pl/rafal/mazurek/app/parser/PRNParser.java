@@ -1,8 +1,11 @@
 package pl.rafal.mazurek.app.parser;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.multipart.MultipartFile;
 import pl.rafal.mazurek.app.dto.ParsedWorkbook;
 import pl.rafal.mazurek.app.dto.WorkbookRecord;
+import pl.rafal.mazurek.app.exception.ParsingException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -10,23 +13,28 @@ import java.util.List;
 
 public class PRNParser implements FileParser {
 
+    private static final Logger LOGGER = LogManager.getLogger(PRNParser.class);
+
     @Override
     public ParsedWorkbook parseWorkbookFile(MultipartFile file) {
+        LOGGER.info("Parsing .prn file: {}", file.getOriginalFilename());
+
         List<WorkbookRecord> records = new ArrayList<>();
-        List<String> header = new ArrayList<>();
+        List<String> headers;
 
         try(InputStream is = file.getInputStream();
-            BufferedReader br = new BufferedReader(new InputStreamReader(is, "ISO-8859-1"))) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(is, ISO_ENCODING))) {
 
-            header = listLineColumns(br.readLine());
+            headers = listLineColumns(br.readLine());
 
             for(String line; (line = br.readLine()) != null; ) {
                 records.add(parseLineToRecord(line));
             }
-        }catch (IOException ex){
-            System.err.println(ex.getMessage());
+        } catch (IOException | RuntimeException e) {
+            LOGGER.error("Error during parsing .csv file: {}", e.getMessage());
+            throw new ParsingException(e.getMessage(), e);
         }
-        return new ParsedWorkbook(records, header);
+        return new ParsedWorkbook(records, headers);
     }
 
     private WorkbookRecord parseLineToRecord(String line) {

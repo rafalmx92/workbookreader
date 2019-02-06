@@ -2,13 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
-    <style type="text/css">
-        .myTable { background-color:#eee;border-collapse:collapse; }
-        .myTable th { background-color:#000;color:white; }
-        .myTable td, .myTable th { padding:5px;border:1px solid #000; }
-    </style>
+    <title>Workbook reader by Rafał Mazurek</title>
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
 <div>
@@ -18,12 +13,12 @@
 <table class="myTable">
     <thead>
     <tr>
-        <th th:text="${header[0]}">1</th>
-        <th th:text="${header[1]}">2</th>
-        <th th:text="${header[2]}">3</th>
-        <th th:text="${header[3]}">4</th>
-        <th th:text="${header[4]}">5</th>
-        <th th:text="${header[5]}">6</th>
+        <th th:text="${headers[0]}">1</th>
+        <th th:text="${headers[1]}">2</th>
+        <th th:text="${headers[2]}">3</th>
+        <th th:text="${headers[3]}">4</th>
+        <th th:text="${headers[4]}">5</th>
+        <th th:text="${headers[5]}">6</th>
     </tr>
     </thead>
     <tbody>
