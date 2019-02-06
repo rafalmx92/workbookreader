@@ -31,7 +31,7 @@ public class PRNParser implements FileParser {
                 records.add(parseLineToRecord(line));
             }
         } catch (IOException | RuntimeException e) {
-            LOGGER.error("Error during parsing .csv file: {}", e.getMessage());
+            LOGGER.error("Error during parsing .prn file: {}", e.getMessage());
             throw new ParsingException(e.getMessage(), e);
         }
         return new ParsedWorkbook(records, headers);
